@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -115,6 +115,35 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\ExitRoom.cpp" />
+    <ClCompile Include="src\Chamber.cpp" />
+    <ClCompile Include="src\Connector.cpp" />
+    <ClCompile Include="src\Entity.cpp" />
+    <ClCompile Include="src\InputValidationFunctions.cpp" />
+    <ClCompile Include="src\Item.cpp" />
+    <ClCompile Include="src\Menu.cpp" />
+    <ClCompile Include="src\NumGenerator.cpp" />
+    <ClCompile Include="src\Player.cpp" />
+    <ClCompile Include="src\Shrine.cpp" />
+    <ClCompile Include="src\Space.cpp" />
+    <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\StartRoom.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\ExitRoom.h" />
+    <ClInclude Include="src\Chamber.h" />
+    <ClInclude Include="src\Connector.h" />
+    <ClInclude Include="src\Entity.h" />
+    <ClInclude Include="src\InputValidationFunctions.hpp" />
+    <ClInclude Include="src\Item.h" />
+    <ClInclude Include="src\Menu.hpp" />
+    <ClInclude Include="src\NumGenerator.hpp" />
+    <ClInclude Include="src\Player.h" />
+    <ClInclude Include="src\Shrine.h" />
+    <ClInclude Include="src\Space.h" />
+    <ClInclude Include="src\Game.h" />
+    <ClInclude Include="src\StartRoom.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
