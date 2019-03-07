@@ -12,6 +12,11 @@
 #include "StartRoom.h"
 #include "ExitRoom.h"
 #include <memory>
+#include "Shield.h"
+#include "HealthPotion.h"
+#include "EnergyPotion.h"
+#include "Key.h"
+#include "BottledRage.h"
 
 #define MAP_WIDTH	6
 #define MAP_HEIGHT	7

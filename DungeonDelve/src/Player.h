@@ -6,7 +6,9 @@
 #include "Entity.h"
 #include "Menu.hpp"
 
-#define MAX_ITEMS 5
+#define MAX_ITEMS		5
+#define PLAYER_HP		50
+#define PLAYER_ENERGY	100
 
 struct Choice {
 	int choice;
@@ -15,6 +17,9 @@ struct Choice {
 
 class Player : public Entity
 {
+private:
+
+	int energy;
 
 public:
 
@@ -25,6 +30,8 @@ public:
 	Player(Space* startSpace, int startHP, int startAttack);
 
 	~Player();
+
+	bool shieldBuff = false;
 
 	void attack(Entity*) override;
 
@@ -43,6 +50,12 @@ public:
 	void pickUp();
 	
 	bool isFull();
+
+	void restoreHP(int);
+
+	void restoreEnergy(int);
+
+	void setAttack(int);
 
 };
 

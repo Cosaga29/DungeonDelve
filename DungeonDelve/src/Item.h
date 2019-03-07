@@ -2,6 +2,9 @@
 #define ITEM_HPP
 
 #include <string>
+#include <iostream>
+
+class Player;
 
 class Item
 {
@@ -17,7 +20,7 @@ public:
 
 	virtual ~Item();
 
-	virtual void use() = 0;
+	virtual void use(Player*) = 0;
 
 	std::string getDescription() const;
 	

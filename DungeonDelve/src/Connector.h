@@ -11,11 +11,11 @@ public:
 
 	~Connector();
 
-	void onEnter() override;
+	void onEnter(Player*) override;
 
 	void update() override;
 
-	void onExit() override;
+	bool onExit(Player*) override;
 
 
 

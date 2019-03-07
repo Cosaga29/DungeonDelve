@@ -10,7 +10,12 @@ Player::Player(Space* startSpace, int startHP, int startAttack) :
 	//build actions menu
 	buildActions();
 
-	_inventory.push_back(std::unique_ptr<Item>(new HealthPotion()));
+	//_inventory.push_back(std::unique_ptr<Item>(new HealthPotion()));
+	//_inventory.push_back(std::unique_ptr<Item>(new EnergyPotion()));
+	//_inventory.push_back(std::unique_ptr<Item>(new EnergyPotion()));
+	//_inventory.push_back(std::unique_ptr<Item>(new EnergyPotion()));
+	//_inventory.push_back(std::unique_ptr<Item>(new BottledRage()));
+	
 
 }
 
@@ -170,4 +175,25 @@ void Player::pickUp()
 bool Player::isFull()
 {
 	return _inventory.size() >= MAX_ITEMS;
+}
+
+
+//TODO::IMPLEMENT
+void Player::restoreHP(int amount)
+{
+	//check if player has shield
+	health += amount;
+}
+
+void Player::restoreEnergy(int value)
+{
+	energy += value;
+	if (energy > PLAYER_ENERGY) {
+		energy = PLAYER_ENERGY;
+	}
+}
+
+void Player::setAttack(int value)
+{
+	attack_power = value;
 }

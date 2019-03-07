@@ -12,7 +12,7 @@ ExitRoom::~ExitRoom()
 {
 }
 
-void ExitRoom::onEnter()
+void ExitRoom::onEnter(Player*)
 {
 }
 
@@ -20,6 +20,7 @@ void ExitRoom::update()
 {
 }
 
-void ExitRoom::onExit()
+bool ExitRoom::onExit(Player*)
 {
+	return true;
 }

@@ -12,7 +12,7 @@ Connector::~Connector()
 {
 }
 
-void Connector::onEnter()
+void Connector::onEnter(Player*)
 {
 }
 
@@ -20,6 +20,7 @@ void Connector::update()
 {
 }
 
-void Connector::onExit()
+bool Connector::onExit(Player*)
 {
+	return true;
 }

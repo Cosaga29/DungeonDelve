@@ -12,7 +12,7 @@ Shrine::~Shrine()
 {
 }
 
-void Shrine::onEnter()
+void Shrine::onEnter(Player*)
 {
 }
 
@@ -20,6 +20,7 @@ void Shrine::update()
 {
 }
 
-void Shrine::onExit()
+bool Shrine::onExit(Player*)
 {
+	return true;
 }

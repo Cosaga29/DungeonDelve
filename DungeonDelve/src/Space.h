@@ -7,8 +7,8 @@
 #include "Item.h"
 #include <iostream>
 #include "HealthPotion.h"
-
-class Entity;
+#include "EnergyPotion.h"
+#include "BottledRage.h"
 
 typedef std::vector<std::unique_ptr<Item> > Inventory;
 
@@ -16,7 +16,11 @@ enum SPACE_TYPE { SHRINE, CHAMBER, CONNECTOR, EXIT };
 
 enum DIRECTION { TOP = 1, BOTTOM, RIGHT, LEFT };
 
+class Entity;
+
 class Item;
+
+class Player;
 
 class Space
 {
@@ -50,9 +54,9 @@ public:
 
 	virtual ~Space();
 
-	virtual void onEnter() = 0;
+	virtual void onEnter(Player*) = 0;
 	virtual void update() = 0;
-	virtual void onExit() = 0;
+	virtual bool onExit(Player*) = 0;
 
 
 };

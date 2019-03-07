@@ -28,6 +28,8 @@ public:
 
 	void get(Item* pickup);
 
+	void setHealth(int);
+
 	virtual ~Entity();
 
 	virtual void attack(Entity*) = 0;

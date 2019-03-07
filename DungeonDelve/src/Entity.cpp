@@ -29,6 +29,11 @@ void Entity::get(Item * pickup)
 	_inventory.push_back(std::unique_ptr<Item>(pickup));
 }
 
+void Entity::setHealth(int value)
+{
+	health = value;
+}
+
 
 Entity::~Entity()
 {

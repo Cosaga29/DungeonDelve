@@ -67,6 +67,13 @@ void Game::genMap()
 
 	linkRooms();
 
+	//spawn necessary items
+	map[4][0]->_inventory.push_back(std::unique_ptr<Item>(new Shield()));
+	map[0][1]->_inventory.push_back(std::unique_ptr<Item>(new BottledRage()));
+
+	//spawn enemies
+
+
 }
 
 bool Game::validPos(int x, int y) {
@@ -202,14 +209,27 @@ void Game::run()
 
 	while (!userExit) {
 
+		//print map, room description, enemies in room, items in room
 		bound_player->look();
-		//print enemies in room
+
+		//display player actions available for the room
 		bound_player->actions.display();
+
+		//get input from the user
 		userInput = validateInputRange(1, bound_player->getNumOfActions());
-
-
-
+		
+		//dispatch event to the userChoice function to resolve input event
 		userExit = onUserChoice(userInput);
+
+		//check if user wanted to exit
+		if (userExit) {
+			return;
+		}
+
+		//update room - resolve monster attacks, check to see if items that have 0 uses need to be deleted, or delete them automatically on 0 uses
+
+
+
 
 	}
 		
@@ -219,15 +239,23 @@ void Game::run()
 
 
 bool Game::onUserChoice(int userInput) {
+	std::cout << "\n\n" << std::endl;
 	if (userInput == bound_player->getNumOfActions()) {
 		return true;
 	}
 	//user gave a move command
 	if (userInput >= 1 && userInput <= 4)
 	{
+
+
 		//call room on exit
-		bound_player.get()->move((DIRECTION)userInput);
-		//call room on enter
+		if (bound_player->getCurrentSpace()->onExit(bound_player.get())) {
+			bound_player->move((DIRECTION)userInput);
+
+			bound_player->getCurrentSpace()->onEnter(bound_player.get());
+		}
+
+
 	}
 	else if (userInput == 5) //user selected inventory
 	{
@@ -246,8 +274,8 @@ bool Game::onUserChoice(int userInput) {
 
 				//TODO:: IMPLEMENT THESE
 				//test what the item is an modify player health/energy respectively
-				std::cout << "You used a " << bound_player->_inventory[inventoryChoice.inventory_index - 1]->getDescription();
-				bound_player->_inventory[inventoryChoice.inventory_index - 1]->use();
+				//std::cout << "You used " << bound_player->_inventory[inventoryChoice.inventory_index - 1]->getDescription();
+				bound_player->_inventory[inventoryChoice.inventory_index - 1]->use(bound_player.get());
 
 
 
@@ -264,9 +292,13 @@ bool Game::onUserChoice(int userInput) {
 			}
 		}
 	}
-	else if (userInput == 6) 
+	else if (userInput == 6)	//user selected to attack
 	{
-		//attack
+		//select which monster to attack in room, 
+
+		//attack the monster
+
+
 	}
 	else if (userInput == 7) 
 	{
@@ -284,13 +316,29 @@ bool Game::onUserChoice(int userInput) {
 			}
 			else 
 			{
-				//place item from room into player pack
+				//build menu of items currently in the room
+				Menu roomItems;
+				for (int i = 0; i < bound_player->getCurrentSpace()->_inventory.size(); i++) {
+					roomItems.addPrompt(bound_player->getCurrentSpace()->_inventory[i]->getDescription());
+				}
+
+				//get user choice of item they would like to pick up
+				roomItems.displayMessage("\n\nSelect item to pickup: ");
+				int roomItemChoice = roomItems.getUserChoice();
+
+				//put item in pack
+				bound_player->_inventory.push_back(std::unique_ptr<Item>(bound_player->getCurrentSpace()->_inventory[roomItemChoice-1].release()));
+
+				//remove pointer from inventory
+
+				bound_player->getCurrentSpace()->_inventory.erase(bound_player->getCurrentSpace()->_inventory.begin() + (roomItemChoice - 1));
+
 				//first item in room to pick up
 
-				bound_player->_inventory.push_back(std::unique_ptr<Item>(bound_player->getCurrentSpace()->_inventory.front().release()));
+				//bound_player->_inventory.push_back(std::unique_ptr<Item>(bound_player->getCurrentSpace()->_inventory.front().release()));
 
 				//remove first position pointer from room inventory
-				bound_player->getCurrentSpace()->_inventory.erase(bound_player->getCurrentSpace()->_inventory.begin());
+				//bound_player->getCurrentSpace()->_inventory.erase(bound_player->getCurrentSpace()->_inventory.begin());
 			}
 		}
 	}

@@ -12,7 +12,7 @@ Chamber::~Chamber()
 {
 }
 
-void Chamber::onEnter()
+void Chamber::onEnter(Player*)
 {
 }
 
@@ -20,6 +20,7 @@ void Chamber::update()
 {
 }
 
-void Chamber::onExit()
+bool Chamber::onExit(Player*)
 {
+	return true;
 }

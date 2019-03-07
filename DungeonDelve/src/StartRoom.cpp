@@ -14,7 +14,7 @@ StartRoom::~StartRoom()
 {
 }
 
-void StartRoom::onEnter()
+void StartRoom::onEnter(Player*)
 {
 	std::cout << "Welcome to the game. " << std::endl;
 }
@@ -23,6 +23,7 @@ void StartRoom::update()
 {
 }
 
-void StartRoom::onExit()
+bool StartRoom::onExit(Player*)
 {
+	return true;
 }

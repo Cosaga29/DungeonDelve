@@ -1,4 +1,5 @@
 #include "EnergyPotion.h"
+#include "Player.h"
 
 
 
@@ -12,6 +13,15 @@ EnergyPotion::~EnergyPotion()
 {
 }
 
-void EnergyPotion::use()
+void EnergyPotion::use(Player* pl)
 {
+	if (uses <= 0) {	//no uses remain, change items description
+		description = "Energy Potion [Empty]";
+		std::cout << "The energy potion is empty.. " << std::endl;
+	}
+	else {
+		std::cout << "\n\nYou take a sip of the energy potion.\n" << std::endl;
+		pl->restoreEnergy(EP_RESTORE);
+		--uses;
+	}
 }
