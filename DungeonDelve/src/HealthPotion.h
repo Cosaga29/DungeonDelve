@@ -16,10 +16,12 @@ public:
 
 	//Item::Item(int _id, bool _bound, int _uses, std::string desc)
 	HealthPotion(int _id = HP_ID, bool _bound = HP_BOUND, int _uses = DEFAULT_USES, 
-		std::string desc = "A red elixer that is very viscous and smells like cough syrup.");
+		std::string desc = "Health Potion");
 
 
 	~HealthPotion();
+
+	void use() override;
 };
 
 #endif

@@ -16,11 +16,17 @@ protected:
 
 public:
 
+	std::string name;
+
 	Inventory _inventory;
 
 	Space* getCurrentSpace() const;
 
-	Entity(Space* startSpace, int startHealth, int startAttack);
+	Entity(Space* startSpace, int startHealth, int startAttack, std::string name = "Player");
+
+	void drop(int item_id);
+
+	void get(Item* pickup);
 
 	virtual ~Entity();
 

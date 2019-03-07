@@ -5,8 +5,13 @@
 Player::Player(Space* startSpace, int startHP, int startAttack) :
 	Entity(startSpace, startHP, startAttack)
 {
+
+
 	//build actions menu
 	buildActions();
+
+	_inventory.push_back(std::unique_ptr<Item>(new HealthPotion()));
+
 }
 
 
@@ -101,20 +106,64 @@ void Player::look() const
 
 	//print room description
 	currentSpace->getDescription();
+	
+	//print enemies in room
+	currentSpace->getEnemies();
+
+	//print items in room
+	currentSpace->getItems();
 
 }
 
 void Player::buildActions()
 {
-	actions.clearMenu();
+	//actions.clearMenu();
 	actions.addPrompt("Move Up");
 	actions.addPrompt("Move Down");
 	actions.addPrompt("Move Right");
 	actions.addPrompt("Move Left");
+	actions.addPrompt("Inventory");
+	actions.addPrompt("Attack");
+	actions.addPrompt("Get Item");
+	//actions.addPrompt("Room Actions");
 	actions.addPrompt("Exit");
 
 }
 
 int Player::getNumOfActions() const {
 	return actions.getExitCode();
+}
+
+Choice Player::openInvetory() //print out user inventory and get input based on what the user would like to do
+{
+	//build inventory
+	items.clearMenu();
+	for (auto it = _inventory.begin(); it != _inventory.end(); it++) {
+		items.addPrompt((*it).get()->getDescription());				//add item description to inventory prompt
+	}
+	if (_inventory.empty()) {
+		std::cout << "Your inventory is empty!" << std::endl;
+		return{ 0, 0 };
+	}
+
+	items.addPrompt("Exit");
+
+	Choice toReturn;
+	toReturn.inventory_index = items.getUserChoice();	//get the item the user wants
+
+	Menu use_drop;										//get action the user wants to do 
+	use_drop.addPrompt("Use");		//1 - use
+	use_drop.addPrompt("Drop");		//2 - drop
+
+	toReturn.choice = use_drop.getUserChoice();			//return struct with index/action to game class
+
+	return toReturn;
+}
+
+void Player::pickUp()
+{
+
+	_inventory.push_back(std::unique_ptr<Item>(currentSpace->_inventory.front().release()));
+	currentSpace->_inventory.erase(currentSpace->_inventory.begin());
+
 }

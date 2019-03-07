@@ -11,3 +11,7 @@ EnergyPotion::EnergyPotion(int _id, bool _bound, int _uses, std::string desc) :
 EnergyPotion::~EnergyPotion()
 {
 }
+
+void EnergyPotion::use()
+{
+}

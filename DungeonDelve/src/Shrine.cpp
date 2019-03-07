@@ -16,7 +16,7 @@ void Shrine::onEnter()
 {
 }
 
-void Shrine::onPlayerAction()
+void Shrine::update()
 {
 }
 

@@ -16,7 +16,7 @@ void Connector::onEnter()
 {
 }
 
-void Connector::onPlayerAction()
+void Connector::update()
 {
 }
 

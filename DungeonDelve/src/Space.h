@@ -6,6 +6,9 @@
 #include <memory>
 #include "Item.h"
 #include <iostream>
+#include "HealthPotion.h"
+
+class Entity;
 
 typedef std::vector<std::unique_ptr<Item> > Inventory;
 
@@ -35,7 +38,12 @@ public:
 
 	Inventory _inventory;
 
+	std::vector<std::unique_ptr<Entity >> enemiesInRoom;
+
 	void getDescription() const;
+	void getItems() const;
+	void getEnemies() const;
+
 
 	char getMapChar() const;
 
@@ -44,7 +52,7 @@ public:
 	virtual ~Space();
 
 	virtual void onEnter() = 0;
-	virtual void onPlayerAction() = 0;
+	virtual void update() = 0;
 	virtual void onExit() = 0;
 
 

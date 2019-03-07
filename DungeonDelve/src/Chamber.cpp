@@ -16,7 +16,7 @@ void Chamber::onEnter()
 {
 }
 
-void Chamber::onPlayerAction()
+void Chamber::update()
 {
 }
 

@@ -16,7 +16,7 @@ void ExitRoom::onEnter()
 {
 }
 
-void ExitRoom::onPlayerAction()
+void ExitRoom::update()
 {
 }
 

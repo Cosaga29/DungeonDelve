@@ -19,6 +19,8 @@ public:
 
 
 	~EnergyPotion();
+
+	void use() override;
 };
 
 #endif

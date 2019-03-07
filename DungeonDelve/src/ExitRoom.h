@@ -14,7 +14,7 @@ public:
 
 	void onEnter() override;
 
-	void onPlayerAction() override;
+	void update() override;
 
 	void onExit() override;
 

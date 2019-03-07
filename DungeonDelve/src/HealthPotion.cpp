@@ -11,3 +11,7 @@ HealthPotion::HealthPotion(int _id, bool _bound, int _uses, std::string desc) :
 HealthPotion::~HealthPotion()
 {
 }
+
+void HealthPotion::use()
+{
+}

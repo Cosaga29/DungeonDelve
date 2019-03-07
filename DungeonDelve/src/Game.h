@@ -56,7 +56,7 @@ public:
 
 	void getUserAction();
 
-	bool transferItem(Inventory source, Inventory destination);
+	bool transferItem(Inventory source, Inventory destination, int item_id);
 
 
 };

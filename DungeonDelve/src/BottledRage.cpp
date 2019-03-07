@@ -11,3 +11,7 @@ BottledRage::BottledRage(int _id, bool _bound, int _uses, std::string desc) :
 BottledRage::~BottledRage()
 {
 }
+
+void BottledRage::use()
+{
+}

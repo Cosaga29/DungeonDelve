@@ -19,7 +19,7 @@ public:
 
 	virtual void use() = 0;
 
-	virtual void getDescription() = 0;
+	std::string getDescription() const;
 	
 
 };

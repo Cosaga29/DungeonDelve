@@ -202,13 +202,44 @@ void Game::getUserAction()
 
 	while (1) {
 		bound_player.get()->look();
+		//print enemies in room
 		bound_player.get()->actions.display();
 		userInput = validateInputRange(1, bound_player.get()->getNumOfActions());
 
+
+		//HANDLE USER CHOICE
 		if (userInput >= 1 && userInput <= 4) { //user gave a move command
+			//call room on exit
 			bound_player.get()->move((DIRECTION)userInput);
+			//call room on enter
 		}
-		else {
+		else if (userInput == 5){
+			//open inventory
+			Choice inventoryChoice = bound_player->openInvetory();
+			if (inventoryChoice.choice == 0 && inventoryChoice.inventory_index == 0) {
+				//inventory was empty, message was printed in player class, continue
+			}
+			else if (inventoryChoice.choice == 1) {	//user would like to drop item
+				//check that the item that the user would like to drop is not bound
+				if (bound_player->_inventory[inventoryChoice.inventory_index - 1].get()->bound) {
+					//cannot drop item, item is bound
+					std::cout << "This item clings to you, you cannot drop it. " << std::endl;
+				}
+				else {
+					bound_player->drop(inventoryChoice.inventory_index - 1);
+				}
+
+			}
+
+
+
+
+		}
+		else if(userInput == 6){
+			//attack
+		}
+		else if(userInput == 7){
+			//pick up item from current space
 			break;
 		}
 	}
@@ -221,9 +252,20 @@ void Game::getUserAction()
 /*
 Helper function to transfer items from an entity to the room that entity is in
 */
-bool Game::transferItem(Inventory source, Inventory destination)
+bool Game::transferItem(Inventory source, Inventory destination, int item_id)
 {
 	//check that entity has the item to transfer : IMPLEMENT
+
+	//search for the item to transfer
+	for (auto it = source.begin(); it != source.end(); it++) {
+		if ((*it).get()->item_id == item_id) {
+			break;
+		}
+	}
+
+
+
+
 	
 
 	//item not found

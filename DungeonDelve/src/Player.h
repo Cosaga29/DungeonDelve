@@ -8,6 +8,10 @@
 
 #define MAX_ITEMS 5
 
+struct Choice {
+	int choice;
+	int inventory_index;
+};
 
 class Player : public Entity
 {
@@ -15,6 +19,8 @@ class Player : public Entity
 public:
 
 	Menu actions;
+	Menu items;
+	Menu roomInterations;
 
 	Player(Space* startSpace, int startHP, int startAttack);
 
@@ -31,6 +37,10 @@ public:
 	void buildActions();
 
 	int getNumOfActions() const;
+
+	Choice openInvetory();
+
+	void pickUp();
 
 };
 
