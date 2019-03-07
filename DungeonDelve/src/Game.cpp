@@ -72,7 +72,8 @@ void Game::genMap()
 	map[0][1]->_inventory.push_back(std::unique_ptr<Item>(new BottledRage()));
 
 	//spawn enemies
-
+	//map[2][0]->enemiesInRoom.push_back(std::unique_ptr<Entity>(new Demon(map[2][0])));
+	//map[2][1]->enemiesInRoom.push_back(std::unique_ptr<Entity>(new Demon(map[2][1])));
 
 }
 
@@ -227,7 +228,8 @@ void Game::run()
 		}
 
 		//update room - resolve monster attacks, check to see if items that have 0 uses need to be deleted, or delete them automatically on 0 uses
-
+		bound_player->getCurrentSpace()->update(bound_player.get());
+		//if any enemies, attack the player
 
 
 
@@ -250,9 +252,13 @@ bool Game::onUserChoice(int userInput) {
 
 		//call room on exit
 		if (bound_player->getCurrentSpace()->onExit(bound_player.get())) {
+			Space* previousSpace = bound_player->getCurrentSpace();
 			bound_player->move((DIRECTION)userInput);
 
-			bound_player->getCurrentSpace()->onEnter(bound_player.get());
+			if (!bound_player->getCurrentSpace()->onEnter(bound_player.get())) {
+				std::cout << "\n\nA mysterious force prevents you from going this way" << std::endl;
+				bound_player->setCurrentSpace(previousSpace);
+			}
 		}
 
 
@@ -295,6 +301,19 @@ bool Game::onUserChoice(int userInput) {
 	else if (userInput == 6)	//user selected to attack
 	{
 		//select which monster to attack in room, 
+		Menu attackList;
+		attackList.displayMessage("\n\nChoose an enemy to attack:\n");
+		for (unsigned i = 0; i < bound_player->getCurrentSpace()->enemiesInRoom.size(); i++) {
+			attackList.addPrompt(bound_player->getCurrentSpace()->enemiesInRoom[i]->name);
+		}
+
+		if (attackList.getExitCode() != 0) {
+			int attackChoice = attackList.getUserChoice();	//perform an attack on the chosen monster
+			bound_player->getCurrentSpace()->enemiesInRoom[attackChoice - 1]->defend(bound_player->attack());
+		}
+		else {
+			std::cout << "\n\nNothing to attack.\n" << std::endl;
+		}
 
 		//attack the monster
 

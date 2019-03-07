@@ -31,6 +31,24 @@ void Space::getEnemies() const
 	std::cout << "\n" << std::endl;
 }
 
+void Space::removeDeadEnemies() 
+{
+	if (enemiesInRoom.empty()) {
+		return;
+	}
+
+	for (unsigned i = 0; i < enemiesInRoom.size(); i++) {
+		if (enemiesInRoom[i]->isDead()) {
+
+			if (enemiesInRoom[i]->_inventory.empty()) {
+				enemiesInRoom.erase(enemiesInRoom.begin() + i);
+			}
+
+		}
+	}
+	
+}
+
 char Space::getMapChar() const
 {
 	return mapChar;

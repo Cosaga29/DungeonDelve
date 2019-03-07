@@ -5,15 +5,18 @@
 #include "Space.h"
 class Chamber : public Space
 {
+
+	bool keySpawned;
+
 public:
 
 	Chamber(std::vector<std::string>* prompts);
 
 	~Chamber();
 
-	void onEnter(Player*) override;
+	bool onEnter(Player*) override;
 
-	void update() override;
+	void update(Player*) override;
 
 	bool onExit(Player*) override;
 

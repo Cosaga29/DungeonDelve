@@ -22,6 +22,8 @@ public:
 
 	Space* getCurrentSpace() const;
 
+	void setCurrentSpace(Space*);
+
 	Entity(Space* startSpace, int startHealth, int startAttack, std::string name = "Player");
 
 	void drop(int inventory_index);
@@ -30,9 +32,13 @@ public:
 
 	void setHealth(int);
 
+	bool isDead() const;
+
 	virtual ~Entity();
 
-	virtual void attack(Entity*) = 0;
+	virtual int attack() = 0;
+
+	virtual void defend(int) = 0;
 
 	virtual bool move(DIRECTION) = 0;
 

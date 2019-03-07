@@ -17,6 +17,8 @@
 #include "EnergyPotion.h"
 #include "Key.h"
 #include "BottledRage.h"
+#include "Demon.h"
+#include "GreaterDemon.h"
 
 #define MAP_WIDTH	6
 #define MAP_HEIGHT	7

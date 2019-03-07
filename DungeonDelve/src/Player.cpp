@@ -9,12 +9,6 @@ Player::Player(Space* startSpace, int startHP, int startAttack) :
 
 	//build actions menu
 	buildActions();
-
-	//_inventory.push_back(std::unique_ptr<Item>(new HealthPotion()));
-	//_inventory.push_back(std::unique_ptr<Item>(new EnergyPotion()));
-	//_inventory.push_back(std::unique_ptr<Item>(new EnergyPotion()));
-	//_inventory.push_back(std::unique_ptr<Item>(new EnergyPotion()));
-	//_inventory.push_back(std::unique_ptr<Item>(new BottledRage()));
 	
 
 }
@@ -24,8 +18,15 @@ Player::~Player()
 {
 }
 
-void Player::attack(Entity *)
+int Player::attack()
 {
+	return attack_power;
+}
+
+void Player::defend(int damage)
+{
+	std::cout << "\n\nYou took " << damage << " damage!" << std::endl;
+	health -= damage;
 }
 
 /*
@@ -181,8 +182,21 @@ bool Player::isFull()
 //TODO::IMPLEMENT
 void Player::restoreHP(int amount)
 {
-	//check if player has shield
 	health += amount;
+	//check if player has picked up shield
+	if (shieldBuff) {	//player has picked up shield, heal up to 500
+		//restore up to max health
+		if (health > PLAYER_HP * 10) {
+			health = PLAYER_HP * 10;
+		}
+	}
+	else {
+		//player hasnt picked up shield, heal up to 50
+		if (health > PLAYER_HP) {
+			health = PLAYER_HP;
+		}
+	}
+
 }
 
 void Player::restoreEnergy(int value)

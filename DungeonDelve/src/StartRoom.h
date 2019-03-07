@@ -15,9 +15,9 @@ public:
 
 	~StartRoom();
 
-	void onEnter(Player*) override;
+	bool onEnter(Player*) override;
 
-	void update() override;
+	void update(Player*) override;
 
 	bool onExit(Player*) override;
 };

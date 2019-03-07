@@ -6,6 +6,11 @@ Space * Entity::getCurrentSpace() const
 	return currentSpace;
 }
 
+void Entity::setCurrentSpace(Space * space)
+{
+	currentSpace = space;
+}
+
 Entity::Entity(Space* startSpace, int startHealth, int startAttack, std::string name) :
 	currentSpace(startSpace), health(startHealth), attack_power(startAttack), name(name)
 {
@@ -32,6 +37,11 @@ void Entity::get(Item * pickup)
 void Entity::setHealth(int value)
 {
 	health = value;
+}
+
+bool Entity::isDead() const
+{
+	return health <= 0;
 }
 
 

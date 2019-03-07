@@ -12,11 +12,12 @@ Shrine::~Shrine()
 {
 }
 
-void Shrine::onEnter(Player*)
+bool Shrine::onEnter(Player*)
 {
+	return true;
 }
 
-void Shrine::update()
+void Shrine::update(Player*)
 {
 }
 

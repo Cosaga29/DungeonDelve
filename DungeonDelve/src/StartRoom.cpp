@@ -14,12 +14,13 @@ StartRoom::~StartRoom()
 {
 }
 
-void StartRoom::onEnter(Player*)
+bool StartRoom::onEnter(Player*)
 {
 	std::cout << "Welcome to the game. " << std::endl;
+	return true;
 }
 
-void StartRoom::update()
+void StartRoom::update(Player*)
 {
 }
 

@@ -1,4 +1,5 @@
 #include "Connector.h"
+#include "Player.h"
 
 
 
@@ -12,15 +13,26 @@ Connector::~Connector()
 {
 }
 
-void Connector::onEnter(Player*)
+bool Connector::onEnter(Player*)
 {
+	return true;
 }
 
-void Connector::update()
+void Connector::update(Player* pl)
 {
+	removeDeadEnemies();
+
+	//if any enemies, attack the player
+	for (unsigned i = 0; i < enemiesInRoom.size(); i++) {
+		pl->defend(enemiesInRoom[i]->attack());
+	}
 }
 
 bool Connector::onExit(Player*)
 {
-	return true;
+	if (enemiesInRoom.empty()) {	//player needs to kill the enemies in the room before they can leave
+		return true;
+	}
+	std::cout << "Something is preventing you from leaving!" << std::endl;
+	return false;
 }

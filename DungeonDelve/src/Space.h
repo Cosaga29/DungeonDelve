@@ -48,14 +48,16 @@ public:
 	void getItems() const;
 	void getEnemies() const;
 
+	void removeDeadEnemies();
+
 	char getMapChar() const;
 
 	Space(char c, std::vector<std::string>*);
 
 	virtual ~Space();
 
-	virtual void onEnter(Player*) = 0;
-	virtual void update() = 0;
+	virtual bool onEnter(Player*) = 0;
+	virtual void update(Player*) = 0;
 	virtual bool onExit(Player*) = 0;
 
 

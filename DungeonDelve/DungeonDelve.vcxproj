@@ -115,6 +115,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\GreaterDemon.cpp" />
+    <ClCompile Include="src\Demon.cpp" />
     <ClCompile Include="src\Shield.cpp" />
     <ClCompile Include="src\BottledRage.cpp" />
     <ClCompile Include="src\EnergyPotion.cpp" />
@@ -136,6 +138,8 @@
     <ClCompile Include="src\StartRoom.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\GreaterDemon.h" />
+    <ClInclude Include="src\Demon.h" />
     <ClInclude Include="src\Shield.h" />
     <ClInclude Include="src\BottledRage.h" />
     <ClInclude Include="src\EnergyPotion.h" />

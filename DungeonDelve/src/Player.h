@@ -33,7 +33,9 @@ public:
 
 	bool shieldBuff = false;
 
-	void attack(Entity*) override;
+	int attack() override;
+
+	void defend(int) override;
 
 	bool move(DIRECTION) override;
 
