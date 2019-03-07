@@ -44,7 +44,6 @@ public:
 	void getItems() const;
 	void getEnemies() const;
 
-
 	char getMapChar() const;
 
 	Space(char c, std::vector<std::string>*);

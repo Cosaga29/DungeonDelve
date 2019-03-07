@@ -10,7 +10,7 @@ int main() {
 
 	newGame.printMap();
 
-	newGame.getUserAction();
+	newGame.run();
 
 
 

@@ -77,11 +77,6 @@ bool Player::move(DIRECTION dir)
 	return false;
 }
 
-bool Player::get()
-{
-	return true;
-}
-
 /*
 Function to print what the player can currently see
 
@@ -125,7 +120,7 @@ void Player::buildActions()
 	actions.addPrompt("Inventory");
 	actions.addPrompt("Attack");
 	actions.addPrompt("Get Item");
-	//actions.addPrompt("Room Actions");
+	actions.addPrompt("Look");
 	actions.addPrompt("Exit");
 
 }
@@ -151,6 +146,9 @@ Choice Player::openInvetory() //print out user inventory and get input based on 
 	Choice toReturn;
 	toReturn.inventory_index = items.getUserChoice();	//get the item the user wants
 
+	if (toReturn.inventory_index == items.getExitCode()) {
+		return { 0, 0 };
+	}
 	Menu use_drop;										//get action the user wants to do 
 	use_drop.addPrompt("Use");		//1 - use
 	use_drop.addPrompt("Drop");		//2 - drop
@@ -160,10 +158,16 @@ Choice Player::openInvetory() //print out user inventory and get input based on 
 	return toReturn;
 }
 
+
 void Player::pickUp()
 {
 
 	_inventory.push_back(std::unique_ptr<Item>(currentSpace->_inventory.front().release()));
 	currentSpace->_inventory.erase(currentSpace->_inventory.begin());
 
+}
+
+bool Player::isFull()
+{
+	return _inventory.size() >= MAX_ITEMS;
 }

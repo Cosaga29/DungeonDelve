@@ -20,8 +20,11 @@ using std::unique_ptr;
 
 class Game
 {
+private:
+
 public:
 
+	bool onUserChoice(int choice);
 
 	Game();
 	
@@ -54,9 +57,9 @@ public:
 
 	void printMap() const;
 
-	void getUserAction();
+	void run();
 
-	bool transferItem(Inventory source, Inventory destination, int item_id);
+
 
 
 };

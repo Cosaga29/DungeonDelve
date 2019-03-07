@@ -24,7 +24,7 @@ public:
 
 	Entity(Space* startSpace, int startHealth, int startAttack, std::string name = "Player");
 
-	void drop(int item_id);
+	void drop(int inventory_index);
 
 	void get(Item* pickup);
 
@@ -34,7 +34,7 @@ public:
 
 	virtual bool move(DIRECTION) = 0;
 
-	virtual bool get() = 0;
+	//virtual bool get() = 0;
 
 
 	

@@ -30,7 +30,7 @@ public:
 
 	bool move(DIRECTION) override;
 
-	bool get() override;
+	//bool get() override;
 
 	void look() const;
 
@@ -41,6 +41,8 @@ public:
 	Choice openInvetory();
 
 	void pickUp();
+	
+	bool isFull();
 
 };
 
