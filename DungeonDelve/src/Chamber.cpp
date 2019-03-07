@@ -31,6 +31,8 @@ void Chamber::update(Player* pl)
 		pl->defend(enemiesInRoom[i]->attack());
 	}
 
+	//make the player take extra damage if they dont have the bottle
+
 	if (enemiesInRoom.empty() && !keySpawned) { //if player has defeated enemy and key hasnt spawned, spawn key
 		//player defeated the entity, spawn a key
 		std::cout << "You defeated the greater demon!!" << std::endl;

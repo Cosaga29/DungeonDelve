@@ -1,11 +1,29 @@
 #include "Connector.h"
 #include "Player.h"
+#include "Demon.h"
 
 
 
 Connector::Connector(std::vector<std::string>* prompts) :
 	Space('X', prompts)
 {
+	std::random_device rngGen;
+	int chance = rngGen() % 100;
+
+	if (chance > 85) { //15% chance to spawn a demon
+		enemiesInRoom.push_back(std::unique_ptr<Entity>(new Demon(this)));
+	}
+
+	chance = rand() % 100;
+	if (chance > 85) {	//15% chance to spawn a health potion
+		_inventory.push_back(std::unique_ptr<Item>(new HealthPotion()));
+	}
+
+	chance = rand() % 100;
+	if (chance > 85) {	//15% chance to spawn a energy potion
+		_inventory.push_back(std::unique_ptr<Item>(new EnergyPotion()));
+	}
+
 }
 
 

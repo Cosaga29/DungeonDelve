@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include <memory>
+#include <random>
 #include "Item.h"
 #include <iostream>
 #include "HealthPotion.h"

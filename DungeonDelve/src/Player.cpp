@@ -23,9 +23,16 @@ int Player::attack()
 	return attack_power;
 }
 
-void Player::defend(int damage)
+void Player::defend(int raw_damage)
 {
-	std::cout << "\n\nYou took " << damage << " damage!" << std::endl;
+	int damage = raw_damage;
+	if (shieldBuff) {			//if the player has the shield, they take half damage (its op)
+		damage /= 2;
+		std::cout << "\n\nYou took " << damage << " damage! (" << damage << " blocked)" << std::endl;
+	}
+	else {
+		std::cout << "\n\nYou took " << damage << " damage!" << std::endl;
+	}
 	health -= damage;
 }
 
