@@ -2,21 +2,11 @@
 
 
 
-Item::Item()
+Item::Item(int _id, bool _bound, int _uses, std::string desc)
 {
 }
 
 
 Item::~Item()
 {
-}
-
-int Item::getID() const
-{
-	return item_id;
-}
-
-std::string Item::getDescription() const
-{
-	return description;
 }

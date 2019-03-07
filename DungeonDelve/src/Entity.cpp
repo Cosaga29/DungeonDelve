@@ -11,10 +11,6 @@ Entity::Entity(Space* startSpace, int startHealth, int startAttack) :
 {
 }
 
-std::vector<Item>* Entity::getContainer(){
-	return &inventory;
-}
-
 
 Entity::~Entity()
 {

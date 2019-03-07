@@ -1,25 +1,26 @@
 #ifndef ENTITY_HPP
 #define ENTITY_HPP
 
+#include "Item.h"
 #include "Space.h"
 #include "Menu.hpp"
 
 class Entity
 {
+
 protected:
 
 	Space* currentSpace;
 	int health;
 	int attack_power;
-	std::vector<Item> inventory;
 
 public:
+
+	Inventory _inventory;
 
 	Space* getCurrentSpace() const;
 
 	Entity(Space* startSpace, int startHealth, int startAttack);
-
-	std::vector<Item>* getContainer();
 
 	virtual ~Entity();
 

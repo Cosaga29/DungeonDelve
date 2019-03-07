@@ -9,11 +9,18 @@ class Item
 public:
 
 	int item_id;
+	bool bound;
+	int uses;
 	std::string description;
 
-	Item();
+	Item(int _id, bool _bound, int _uses, std::string desc);
 
-	~Item();
+	virtual ~Item();
+
+	virtual void use() = 0;
+
+	virtual void getDescription() = 0;
+	
 
 };
 

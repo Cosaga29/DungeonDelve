@@ -3,12 +3,17 @@
 
 #include <vector>
 #include <string>
+#include <memory>
 #include "Item.h"
 #include <iostream>
+
+typedef std::vector<std::unique_ptr<Item> > Inventory;
 
 enum SPACE_TYPE { SHRINE, CHAMBER, CONNECTOR, EXIT };
 
 enum DIRECTION { TOP = 1, BOTTOM, RIGHT, LEFT };
+
+class Item;
 
 class Space
 {
@@ -28,7 +33,7 @@ public:
 
 	const std::vector<std::string>* prompts;	//container pointing to the available prompts for the room type- init in subclass contructor
 
-	std::vector<Item> itemsInRoom;
+	Inventory _inventory;
 
 	void getDescription() const;
 
@@ -45,7 +50,5 @@ public:
 
 };
 
-
-bool transferItem(std::vector<Item>* source, std::vector<Item>* destination);
 
 #endif

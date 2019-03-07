@@ -115,6 +115,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\BottledRage.cpp" />
+    <ClCompile Include="src\EnergyPotion.cpp" />
+    <ClCompile Include="src\HealthPotion.cpp" />
     <ClCompile Include="src\ExitRoom.cpp" />
     <ClCompile Include="src\Chamber.cpp" />
     <ClCompile Include="src\Connector.cpp" />
@@ -131,6 +134,9 @@
     <ClCompile Include="src\StartRoom.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\BottledRage.h" />
+    <ClInclude Include="src\EnergyPotion.h" />
+    <ClInclude Include="src\HealthPotion.h" />
     <ClInclude Include="src\ExitRoom.h" />
     <ClInclude Include="src\Chamber.h" />
     <ClInclude Include="src\Connector.h" />

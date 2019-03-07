@@ -221,7 +221,7 @@ void Game::getUserAction()
 /*
 Helper function to transfer items from an entity to the room that entity is in
 */
-bool Game::transferItem(Entity* entity, Item& item)
+bool Game::transferItem(Inventory source, Inventory destination)
 {
 	//check that entity has the item to transfer : IMPLEMENT
 	
