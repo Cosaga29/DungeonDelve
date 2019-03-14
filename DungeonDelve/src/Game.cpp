@@ -381,7 +381,7 @@ bool Game::onUserChoice(int userInput) {
 			{
 				//build menu of items currently in the room
 				Menu roomItems;
-				for (int i = 0; i < bound_player->getCurrentSpace()->_inventory.size(); i++) {
+				for (unsigned i = 0; i < bound_player->getCurrentSpace()->_inventory.size(); i++) {
 					roomItems.addPrompt(bound_player->getCurrentSpace()->_inventory[i]->getDescription());
 				}
 

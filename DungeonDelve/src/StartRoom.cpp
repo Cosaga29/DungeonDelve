@@ -22,7 +22,7 @@ bool StartRoom::onEnter(Player*)
 	//print tutorial prompts
 	std::cout << "Welcome to the game! Here is a short tutorial: \n\n" <<
 		"\tThe goal of the game is to go to all the shrines and collect equipment to be able\n" <<
-		"\tto kill the demon in the chamber. You must 'use' the items you get from the shinres.\n" <<
+		"\tto kill the demon in the chamber. You must 'use' the items you get from the shrines.\n" <<
 		"\tThe demon in the chamber will drop a key which will allow you to exit the game.\n\n" << 
 		"\tYou can perform any action in accordance to your action prompts.\n" <<
 		"\tI recommend that you take and use your potions (Both energy and healing)\n" <<

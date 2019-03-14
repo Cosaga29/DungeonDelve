@@ -34,6 +34,8 @@ public:
 
 	bool shieldBuff = false;
 
+	bool bottleBuff = false;
+
 	int attack() override;
 
 	void defend(int) override;

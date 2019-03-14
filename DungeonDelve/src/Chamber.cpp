@@ -29,9 +29,14 @@ void Chamber::update(Player* pl)
 	//if any enemies, attack the player
 	for (unsigned i = 0; i < enemiesInRoom.size(); i++) {
 		pl->defend(enemiesInRoom[i]->attack());
-	}
 
-	//make the player take extra damage if they dont have the bottle
+		//check if player doesn't have bottled rage buff
+		if (!pl->bottleBuff) {
+			std::cout << "The chamber is incredibly hot. You are suffering extra damage." << std::endl;
+			pl->defend(333);
+		}
+
+	}
 
 	if (enemiesInRoom.empty() && !keySpawned) { //if player has defeated enemy and key hasnt spawned, spawn key
 		//player defeated the entity, spawn a key
@@ -40,6 +45,12 @@ void Chamber::update(Player* pl)
 		this->_inventory.push_back(std::unique_ptr<Item>(new Key()));
 		keySpawned = true;
 	}
+
+
+
+
+
+
 }
 
 bool Chamber::onExit(Player*)
