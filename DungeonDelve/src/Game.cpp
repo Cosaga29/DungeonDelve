@@ -4,11 +4,25 @@
 Game::Game()
 {
 	//build prompts to be used for game, must be done before map generation
-	shrinePrompts.push_back("Shrine");
-	connectorPrompts.push_back("Connector");
+	//shrinePrompts.push_back("Shrine");
+	//connectorPrompts.push_back("Connector");
+
+
 	startRoomPrompts.push_back("Start Room");
 	exitPrompts.push_back("Exit Room");
-	chamberPrompts.push_back("Boss Chamber");
+	//chamberPrompts.push_back("Boss Chamber");
+	
+
+	connectorPrompts.push_back("A dark, damp hallway. You think you hear something moving, but you're not sure.");
+	connectorPrompts.push_back("A hallway adorned with a red substance on the walls, it seems to be getting hotter.");
+	connectorPrompts.push_back("An expansive room with menacing statues along the walls. You start to wonder who built this place.");
+	connectorPrompts.push_back("A white hallway, you hear the shifting sounds of rock. The rooms seem to be changing.");
+	connectorPrompts.push_back("Another dark damp hallway, are the rooms changing or are random descriptions being used?");
+	chamberPrompts.push_back("A huge cavern lies below you. You hear the sounds of shackles dragging accross the floor.\nYou look around and spot a huge demon with a small key at the end of his massive sword (is that a keyblade?)");
+	shrinePrompts.push_back("This room is unlike the others. It seems to be pushing back the darkness of the surrounding rooms.\nIt seems that this room was made to help you.");
+
+
+
 
 
 	//loop through map array, setting all Space pointers to null
@@ -207,6 +221,8 @@ void Game::run()
 {
 	int userInput;
 	bool userExit = false;
+
+	bound_player->getCurrentSpace()->onEnter(bound_player.get());
 
 	while (!userExit) {
 

@@ -54,3 +54,10 @@ bool Connector::onExit(Player*)
 	std::cout << "Something is preventing you from leaving!" << std::endl;
 	return false;
 }
+
+void Connector::getDescription() const
+{
+	std::random_device rngGen;
+	int prompt = rngGen() % CONNECTOR_PROMPTS;
+	std::cout << (*prompts)[prompt] << std::endl;
+}

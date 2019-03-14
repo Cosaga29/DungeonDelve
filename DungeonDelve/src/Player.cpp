@@ -9,6 +9,7 @@ Player::Player(Space* startSpace, int startHP, int startAttack) :
 
 	//build actions menu
 	buildActions();
+	energy = 100;
 	
 
 }
@@ -44,6 +45,7 @@ bool Player::move(DIRECTION dir)
 	switch (dir) {
 	case TOP:
 		if (currentSpace->top != 0) {
+			energy -= 5;
 			currentSpace = currentSpace->top;
 			return true;
 		}
@@ -55,6 +57,7 @@ bool Player::move(DIRECTION dir)
 
 	case BOTTOM:
 		if (currentSpace->bottom != 0) {
+			energy -= 5;
 			currentSpace = currentSpace->bottom;
 			return true;
 		}
@@ -66,6 +69,7 @@ bool Player::move(DIRECTION dir)
 
 	case RIGHT:
 		if (currentSpace->right != 0) {
+			energy -= 5;
 			currentSpace = currentSpace->right;
 			return true;
 		}
@@ -77,6 +81,7 @@ bool Player::move(DIRECTION dir)
 
 	case LEFT:
 		if (currentSpace->left != 0) {
+			energy -= 5;
 			currentSpace = currentSpace->left;
 			return true;
 		}
@@ -98,6 +103,7 @@ Function to print what the player can currently see
 void Player::look() const
 {
 	//print top line of map
+	std::cout << "\n[Local Map]\n";
 	std::cout << ' ';
 	std::cout << ((currentSpace->top != 0) ? "|" : " ");
 	std::cout << ' ' << "\n";
@@ -110,7 +116,11 @@ void Player::look() const
 	//print bottom line of map
 	std::cout << ' ';
 	std::cout << ((currentSpace->bottom != 0) ? "|" : " ");
-	std::cout << ' ' << "\n" << std::endl;
+	std::cout << ' ' << std::endl;
+
+	//print players health/energy
+	std::cout << "[Player Health: " << health << "]\n";
+	std::cout << "[Player Energy: " << energy << "]\n" << std::endl;
 
 	//print room description
 	currentSpace->getDescription();

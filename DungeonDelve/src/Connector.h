@@ -2,6 +2,8 @@
 #define CONNECTOR_HPP
 
 
+#define CONNECTOR_PROMPTS 5
+
 #include "Space.h"
 class Connector : public Space
 {
@@ -16,6 +18,8 @@ public:
 	void update(Player*) override;
 
 	bool onExit(Player*) override;
+
+	void getDescription() const override;
 
 
 

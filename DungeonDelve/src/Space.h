@@ -45,7 +45,7 @@ public:
 
 	std::vector<std::unique_ptr<Entity >> enemiesInRoom;
 
-	void getDescription() const;
+	virtual void getDescription() const;
 	void getItems() const;
 	void getEnemies() const;
 
