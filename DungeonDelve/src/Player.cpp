@@ -45,7 +45,7 @@ bool Player::move(DIRECTION dir)
 	switch (dir) {
 	case TOP:
 		if (currentSpace->top != 0) {
-			energy -= 5;
+			energy -= ENERGY_DRAIN;
 			currentSpace = currentSpace->top;
 			return true;
 		}
@@ -57,7 +57,7 @@ bool Player::move(DIRECTION dir)
 
 	case BOTTOM:
 		if (currentSpace->bottom != 0) {
-			energy -= 5;
+			energy -= ENERGY_DRAIN;
 			currentSpace = currentSpace->bottom;
 			return true;
 		}
@@ -69,7 +69,7 @@ bool Player::move(DIRECTION dir)
 
 	case RIGHT:
 		if (currentSpace->right != 0) {
-			energy -= 5;
+			energy -= ENERGY_DRAIN;
 			currentSpace = currentSpace->right;
 			return true;
 		}
@@ -81,7 +81,7 @@ bool Player::move(DIRECTION dir)
 
 	case LEFT:
 		if (currentSpace->left != 0) {
-			energy -= 5;
+			energy -= ENERGY_DRAIN;
 			currentSpace = currentSpace->left;
 			return true;
 		}

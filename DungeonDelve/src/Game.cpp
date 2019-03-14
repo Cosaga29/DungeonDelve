@@ -9,7 +9,7 @@ Game::Game()
 
 
 	startRoomPrompts.push_back("Start Room");
-	exitPrompts.push_back("Exit Room");
+	exitPrompts.push_back("\n\nYou see a light in the distance; you escaped the dungeon!\n\n Congradulations, you have beat the game. You may exit whenever you would like to.\n\n");
 	//chamberPrompts.push_back("Boss Chamber");
 	
 

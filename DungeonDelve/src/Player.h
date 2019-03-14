@@ -9,6 +9,7 @@
 #define MAX_ITEMS		5
 #define PLAYER_HP		50
 #define PLAYER_ENERGY	100
+#define ENERGY_DRAIN	2	//amount of energy the player loses per step
 
 struct Choice {
 	int choice;
