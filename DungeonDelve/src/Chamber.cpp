@@ -38,6 +38,7 @@ void Chamber::update(Player* pl)
 		std::cout << "You defeated the greater demon!!" << std::endl;
 		std::cout << "You hear something hit the floor with a 'ting'" << std::endl;
 		this->_inventory.push_back(std::unique_ptr<Item>(new Key()));
+		keySpawned = true;
 	}
 }
 

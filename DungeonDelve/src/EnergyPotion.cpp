@@ -16,12 +16,17 @@ EnergyPotion::~EnergyPotion()
 void EnergyPotion::use(Player* pl)
 {
 	if (uses <= 0) {	//no uses remain, change items description
-		description = "Energy Potion [Empty]";
-		std::cout << "The energy potion is empty.. " << std::endl;
+		std::cout << "\n\nThe energy potion is empty.. \n" << std::endl;
 	}
 	else {
 		std::cout << "\n\nYou take a sip of the energy potion.\n" << std::endl;
 		pl->restoreEnergy(EP_RESTORE);
 		--uses;
+		
+		//check for empty bottle, update description
+		if (uses <= 0) {
+			description = "Energy Potion [Empty]";
+			std::cout << "\n\nThe energy potion is empty.. \n" << std::endl;
+		}
 	}
 }

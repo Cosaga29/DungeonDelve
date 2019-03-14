@@ -19,6 +19,7 @@ void Shield::use(Player* pl)
 		std::cout << "\n\nYou hold the shield in a ready positon and suddenly feel much, much stronger.\n" << std::endl;
 		pl->setHealth(PLAYER_HP * 10);
 		pl->shieldBuff = true;
+		firstUse = false;
 	}
 	else {
 		std::cout << "\n\nA crimson shield with black etchings around the rim, it looks new. \n" << std::endl;

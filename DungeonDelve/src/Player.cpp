@@ -103,24 +103,24 @@ Function to print what the player can currently see
 void Player::look() const
 {
 	//print top line of map
-	std::cout << "\n[Local Map]\n";
+	std::cout << "\n[Local Map]\t\t\t" << "[Player Health: " << health << "]" << "\t\t\t [Player Energy: " << energy << "]\n\n";
 	std::cout << ' ';
-	std::cout << ((currentSpace->top != 0) ? "|" : " ");
-	std::cout << ' ' << "\n";
+	std::cout << ((currentSpace->top != 0) ? " |" : " \n");
+	std::cout << '\n' << "\n";
 
 	//print middle line of map
-	std::cout << ((currentSpace->left != 0) ? "-" : " ");
+	std::cout << ((currentSpace->left != 0) ? "- " : "  ");
 	std::cout << 'P';
-	std::cout << ((currentSpace->right != 0) ? "-" : " ") << "\n";
+	std::cout << ((currentSpace->right != 0) ? " -" : "  ") << "\n";
 
 	//print bottom line of map
-	std::cout << ' ';
-	std::cout << ((currentSpace->bottom != 0) ? "|" : " ");
+	std::cout << '\n';
+	std::cout << ((currentSpace->bottom != 0) ? "  |\n" : "  \n");
 	std::cout << ' ' << std::endl;
 
 	//print players health/energy
-	std::cout << "[Player Health: " << health << "]\n";
-	std::cout << "[Player Energy: " << energy << "]\n" << std::endl;
+	//std::cout << "[Player Health: " << health << "]\n";
+	//std::cout << "[Player Energy: " << energy << "]\n" << std::endl;
 
 	//print room description
 	currentSpace->getDescription();
@@ -227,4 +227,23 @@ void Player::restoreEnergy(int value)
 void Player::setAttack(int value)
 {
 	attack_power = value;
+}
+
+bool Player::isExhausted() const
+{
+	if (this->energy <= 0) {
+		std::cout << "You have ran out of energy. Game over." << std::endl;
+		return true;
+	}
+
+	return false;
+}
+
+bool Player::playerDead() const
+{
+	if (health <= 0) {
+		std::cout << "You have ran out of health. Game over." << std::endl;
+		return true;
+	}
+	return false;
 }

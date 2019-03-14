@@ -6,8 +6,8 @@
 
 #define EP_ID			10
 #define EP_BOUND		false
-#define EP_DEFAULT_USES	3
-#define EP_RESTORE		10
+#define EP_DEFAULT_USES	2
+#define EP_RESTORE		50
 
 class EnergyPotion : public Item
 {

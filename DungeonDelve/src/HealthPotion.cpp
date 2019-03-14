@@ -17,9 +17,7 @@ HealthPotion::~HealthPotion()
 void HealthPotion::use(Player* pl)
 {
 	if (uses <= 0) {	//no uses remain, change item description
-		description = "Healing Potion [Empty]";
 		std::cout << "\n\nThe healing potion is empty.. \n" << std::endl;
-		
 	}
 	else {
 		if (pl->shieldBuff) {	//player has picked up the shield, change the way the player heals
@@ -31,6 +29,11 @@ void HealthPotion::use(Player* pl)
 			pl->restoreHP(HP_RESTORE);
 		}
 		--uses;
+
+		if (uses <= 0) {
+			description = "Healing Potion [Empty]";
+			std::cout << "\n\nThe healing potion is empty.. \n" << std::endl;
+		}
 	}
 	
 }

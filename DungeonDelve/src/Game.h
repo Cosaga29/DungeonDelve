@@ -66,7 +66,7 @@ public:
 
 	void run();
 
-
+	bool checkPlayer() const;
 
 
 };

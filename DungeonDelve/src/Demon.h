@@ -4,7 +4,7 @@
 
 #include "Entity.h"
 
-#define DEMON_START_HEALTH 15
+#define DEMON_START_HEALTH 10
 #define DEMON_START_ATTACK 5
 
 class Demon : public Entity

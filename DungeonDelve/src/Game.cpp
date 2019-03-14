@@ -13,15 +13,14 @@ Game::Game()
 	//chamberPrompts.push_back("Boss Chamber");
 	
 
-	connectorPrompts.push_back("A dark, damp hallway. You think you hear something moving, but you're not sure.");
-	connectorPrompts.push_back("A hallway adorned with a red substance on the walls, it seems to be getting hotter.");
-	connectorPrompts.push_back("An expansive room with menacing statues along the walls. You start to wonder who built this place.");
-	connectorPrompts.push_back("A white hallway, you hear the shifting sounds of rock. The rooms seem to be changing.");
-	connectorPrompts.push_back("Another dark damp hallway, are the rooms changing or are random descriptions being used?");
-	chamberPrompts.push_back("A huge cavern lies below you. You hear the sounds of shackles dragging accross the floor.\nYou look around and spot a huge demon with a small key at the end of his massive sword (is that a keyblade?)");
-	shrinePrompts.push_back("This room is unlike the others. It seems to be pushing back the darkness of the surrounding rooms.\nIt seems that this room was made to help you.");
-
-
+	//generate room prompts
+	connectorPrompts.push_back("A dark, damp hallway. You think you hear something moving, but you're not sure.\n");
+	connectorPrompts.push_back("A hallway adorned with a red substance on the walls, it seems to be getting hotter.\n");
+	connectorPrompts.push_back("An expansive room with menacing statues along the walls. You start to wonder who built this place.\n");
+	connectorPrompts.push_back("A white hallway, you hear the shifting sounds of rock. The rooms seem to be changing.\n");
+	connectorPrompts.push_back("Another dark damp hallway, are the rooms changing or are random descriptions being used?\n");
+	chamberPrompts.push_back("A huge cavern lies below you. You hear the sounds of shackles dragging accross the floor.\nYou look around and spot a huge demon with a small key at the end of his massive sword (is that a keyblade?)\n");
+	shrinePrompts.push_back("This room is unlike the others. It seems to be pushing back the darkness of the surrounding rooms.\nIt seems that this room was made to help you.\n");
 
 
 
@@ -37,11 +36,13 @@ Game::Game()
 	genMap();
 
 	//create player and set starting location
-	bound_player.reset(new Player(map[2][0], 100, 5));
+	bound_player.reset(new Player(map[2][0], 50, 5));
 	
 }
 
-
+/*
+Game destructor, claim memory allocated for the map
+*/
 Game::~Game()
 {
 	for (int i = 0; i < 7; i++) { //for each row
@@ -85,10 +86,6 @@ void Game::genMap()
 	map[4][0]->_inventory.push_back(std::unique_ptr<Item>(new Shield()));
 	map[0][1]->_inventory.push_back(std::unique_ptr<Item>(new BottledRage()));
 
-	//spawn enemies
-	//map[2][0]->enemiesInRoom.push_back(std::unique_ptr<Entity>(new Demon(map[2][0])));
-	//map[2][1]->enemiesInRoom.push_back(std::unique_ptr<Entity>(new Demon(map[2][1])));
-
 }
 
 bool Game::validPos(int x, int y) {
@@ -105,12 +102,13 @@ Function that loops through map and attempts to bind all rooms in space
 */
 void Game::linkRooms()
 {
+	//std::cout << "Linking rooms. " << std::endl;
 	for (int y = 0; y < 7; y++) {
 		for (int x = 0; x < 6; x++) { // for each space, look at that spaces north, east, west south
 
 			//check left
 			if (map[y][x] != 0) {
-				std::cout << "Space [" << x << "," << y << "] linked." << std::endl;
+				//std::cout << "Space [" << x << "," << y << "] linked." << std::endl;
 				if (validPos(x - 1, y)) {
 					if (map[y][x - 1] != 0) {
 						//std::cout << "attempty to link left" << std::endl;
@@ -215,7 +213,6 @@ GAME-LOOP
 
 gets a prompt from the user, validates it and executes the action
 
-TODO: WORK ON THIS
 */
 void Game::run()
 {
@@ -248,6 +245,10 @@ void Game::run()
 		//if any enemies, attack the player
 
 
+		//check for player death events
+		if (checkPlayer()) {
+			return;
+		}
 
 	}
 		
@@ -255,7 +256,34 @@ void Game::run()
 
 
 
+/*
+Check player health and energy at the end of the game loop
+*/
+bool Game::checkPlayer() const
+{
+	//if player energy <= 0 or health <= 0, return true
+	if (bound_player->isExhausted() || bound_player->playerDead()) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
 
+
+
+/*
+Function to handle user input from the terminal.
+Each option is linked to an action that gets executed.
+
+1-4 - move
+5	- inventory
+6	- attack
+7	- get Item
+8	- Look 
+9	- Exit
+
+*/
 bool Game::onUserChoice(int userInput) {
 	std::cout << "\n\n" << std::endl;
 	if (userInput == bound_player->getNumOfActions()) {

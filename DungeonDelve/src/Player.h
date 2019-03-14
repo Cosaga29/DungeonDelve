@@ -59,6 +59,10 @@ public:
 
 	void setAttack(int);
 
+	bool isExhausted() const;
+
+	bool playerDead() const;
+
 };
 
 #endif
