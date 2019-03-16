@@ -1,6 +1,18 @@
 #ifndef SHIELD_HPP
 #define SHIELD_HPP
 
+/**********************************************************
+Author: Martin Edmunds
+Email: edmundsm@oregonstate.edu
+Class: CS 162-400
+Date: 03/16/19
+Description: Implements the shield item, inherits from Item.
+
+The shield item is used to buff the player to be able to kill
+the greater demon.
+
+***********************************************************/
+
 #include "Item.h"
 
 #define SHIELD_ID			25

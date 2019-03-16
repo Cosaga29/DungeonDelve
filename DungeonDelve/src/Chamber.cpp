@@ -1,10 +1,25 @@
+/**********************************************************
+Author: Martin Edmunds
+Email: edmundsm@oregonstate.edu
+Class: CS 162-400
+Date: 03/16/19
+Description: Implements the chamber space, inherits from Space.
+The chamber is used in the dungeondelve to implement a boss room.
+
+Constructor spawns an entity that must be defeated for a key
+
+***********************************************************/
+
 #include "Chamber.h"
 #include "GreaterDemon.h"
 #include "Player.h"
 #include "Key.h"
 
 
-
+/*
+Consturctor, creates a GreaterDemon object and sets the flag 
+for the key being spawned to false.
+*/
 Chamber::Chamber(std::vector<std::string>* prompts) :
 	Space('C', prompts)
 {
@@ -17,11 +32,21 @@ Chamber::~Chamber()
 {
 }
 
+/*
+Chamber does not have any affect for onEnter
+*/
 bool Chamber::onEnter(Player*)
 {
 	return true;
 }
 
+/*
+For each game tick, the game checks to remove dead enemies from the room.
+If there are any enemies, the room handles the attacks on the player.
+
+The game also checks to see if the player has the bottle item, if they dont,
+they take extra damage since the fight would be incredibly drawn out.
+*/
 void Chamber::update(Player* pl)
 {
 	removeDeadEnemies();
@@ -53,6 +78,9 @@ void Chamber::update(Player* pl)
 
 }
 
+/*
+Prevent the player from leaving if there is enemy in the room
+*/
 bool Chamber::onExit(Player*)
 {
 	if (enemiesInRoom.empty()) {	//player needs to kill the enemies in the room before they can leave

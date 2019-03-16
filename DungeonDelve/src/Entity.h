@@ -1,6 +1,18 @@
 #ifndef ENTITY_HPP
 #define ENTITY_HPP
 
+/**********************************************************
+Author: Martin Edmunds
+Email: edmundsm@oregonstate.edu
+Class: CS 162-400
+Date: 03/16/19
+Description: Implements the Entity class. Defines an object
+that is used by the game class to implement NPCs and the Player.
+
+Defines virtual move, drop and check functions.
+
+***********************************************************/
+
 #include "Item.h"
 #include "Space.h"
 #include "Menu.hpp"

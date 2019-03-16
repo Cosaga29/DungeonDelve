@@ -1,13 +1,28 @@
+/**********************************************************
+Author: Martin Edmunds
+Email: edmundsm@oregonstate.edu
+Class: CS 162-400
+Date: 03/16/19
+Description: Implements the Game class. The game class acts
+as a game engine to handle player input and process game events
+
+***********************************************************/
+
 #include "Game.h"
 
+/*
+Game constructor, builds starting room prompts to be pulled from the rooms during 
+execution of the game.
 
+Creates all space pointers and sets them to null.
+
+Generates the player name.
+
+Create the player and sets the starting location.
+*/
 Game::Game()
 {
 	//build prompts to be used for game, must be done before map generation
-	//shrinePrompts.push_back("Shrine");
-	//connectorPrompts.push_back("Connector");
-
-
 	startRoomPrompts.push_back("Start Room");
 	exitPrompts.push_back("\n\nYou see a light in the distance; you escaped the dungeon!\n\n Congradulations, you have beat the game. You may exit whenever you would like to.\n\n");
 	//chamberPrompts.push_back("Boss Chamber");
@@ -55,7 +70,9 @@ Game::~Game()
 }
 
 /*
-Function to generate the map for the game
+Function to generate the map for the game.
+
+Initializes all the spaces for the game world.
 */
 void Game::genMap()
 {
@@ -79,15 +96,19 @@ void Game::genMap()
 	map[6][2] = new Connector(&connectorPrompts);
 	map[6][3] = new Connector(&connectorPrompts);
 	map[6][4] = new Chamber(&chamberPrompts);
-
+	
+	//call helper function to link all the rooms together
 	linkRooms();
 
-	//spawn necessary items
+	//spawn necessary items in the shrines
 	map[4][0]->_inventory.push_back(std::unique_ptr<Item>(new Shield()));
 	map[0][1]->_inventory.push_back(std::unique_ptr<Item>(new BottledRage()));
 
 }
 
+/*
+Function to check that an x, y position is in the realm of the map
+*/
 bool Game::validPos(int x, int y) {
 	if (x >= 0 && x < MAP_WIDTH) {
 		if (y >= 0 && y < MAP_HEIGHT) {
@@ -98,7 +119,10 @@ bool Game::validPos(int x, int y) {
 }
 
 /*
-Function that loops through map and attempts to bind all rooms in space
+Function that loops through map and attempts to bind all rooms in space.
+
+I made this function because I didn't want to go through and manually set all of 
+the pointers in the 2D space of the map.
 */
 void Game::linkRooms()
 {
@@ -172,11 +196,15 @@ void Game::printConnections(Space * space)
 
 }
 
+/*
+Function to build and print a map of the game area. Different from the map in
+the StartRoom, which is hard-coded.
+*/
 void Game::printMap() const
 {
 
 	std::cout << "MAP: " << std::endl;
-	std::string topBoarder = "----------------\n";
+	std::string topBoarder = "----------------\n";	//build top bar
 
 	std::cout << topBoarder;
 	for (int i = 0; i < MAP_HEIGHT; i++) {
@@ -188,7 +216,7 @@ void Game::printMap() const
 			}
 
 			else { 
-				std::cout << ' '; 
+				std::cout << ' ';					//if a space is null, print space, else get the space's character
 			}
 			std::cout << " ";
 		}
@@ -197,6 +225,7 @@ void Game::printMap() const
 	}
 	std::cout << topBoarder << "\n";
 
+	//print index
 	std::cout << "P - Starting location\n";
 	std::cout << "S - Shrine location\n";
 	std::cout << "C - Chamber location\n";
@@ -210,7 +239,6 @@ void Game::printMap() const
 /*
 GAME-LOOP
 
-
 gets a prompt from the user, validates it and executes the action
 
 */
@@ -219,7 +247,7 @@ void Game::run()
 	int userInput;
 	bool userExit = false;
 
-	bound_player->getCurrentSpace()->onEnter(bound_player.get());
+	bound_player->getCurrentSpace()->onEnter(bound_player.get());	//call the on enter function for the players starting room
 
 	while (!userExit) {
 
@@ -344,7 +372,7 @@ bool Game::onUserChoice(int userInput) {
 	}
 	else if (userInput == 6)	//user selected to attack
 	{
-		//select which monster to attack in room, 
+		//select which monster to attack in room, GENERATE ATTACK MENU
 		Menu attackList;
 		attackList.displayMessage("\n\nChoose an enemy to attack:\n");
 		for (unsigned i = 0; i < bound_player->getCurrentSpace()->enemiesInRoom.size(); i++) {
@@ -358,8 +386,6 @@ bool Game::onUserChoice(int userInput) {
 		else {
 			std::cout << "\n\nNothing to attack.\n" << std::endl;
 		}
-
-		//attack the monster
 
 
 	}

@@ -1,8 +1,19 @@
 #ifndef EP_HPP
 #define EP_HPP
 
-#include "Item.h"
+/**********************************************************
+Author: Martin Edmunds
+Email: edmundsm@oregonstate.edu
+Class: CS 162-400
+Date: 03/16/19
+Description: Implements the EnergyPotion class, inherits from Item.
 
+Defines an item that can be used by the player to restore their energy
+pool. The potions have 2 uses that restore 50 energy each, up to 100 energy.
+
+***********************************************************/
+
+#include "Item.h"
 
 #define EP_ID			10
 #define EP_BOUND		false

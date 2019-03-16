@@ -1,7 +1,21 @@
+/**********************************************************
+Author: Martin Edmunds
+Email: edmundsm@oregonstate.edu
+Class: CS 162-400
+Date: 03/16/19
+Description: implements the player glass, inherits from entity.
+
+Defines movement, energy and health, look commands and inventory management.
+
+***********************************************************/
+
 #include "Player.h"
 
 
-
+/*
+Build the starting action menu, should not change throughout the game.
+Sets player energy
+*/
 Player::Player(Space* startSpace, int startHP, int startAttack) :
 	Entity(startSpace, startHP, startAttack)
 {
@@ -14,16 +28,23 @@ Player::Player(Space* startSpace, int startHP, int startAttack) :
 
 }
 
-
+/*Destructor*/
 Player::~Player()
 {
 }
 
+/*Simulates an attack on an object*/
 int Player::attack()
 {
 	return attack_power;
 }
 
+/*Simulates a defense from damage.
+
+checks to see if the player has the shield buff, if they do the player
+takes half damage.
+
+*/
 void Player::defend(int raw_damage)
 {
 	int damage = raw_damage;
@@ -43,8 +64,8 @@ Function to move the player and update the players current position
 bool Player::move(DIRECTION dir)
 {
 	switch (dir) {
-	case TOP:
-		if (currentSpace->top != 0) {
+	case TOP:		//player wants to move up
+		if (currentSpace->top != 0) {		//if space is good, move and drain energy
 			energy -= ENERGY_DRAIN;
 			currentSpace = currentSpace->top;
 			return true;
@@ -55,8 +76,8 @@ bool Player::move(DIRECTION dir)
 		}
 		break;
 
-	case BOTTOM:
-		if (currentSpace->bottom != 0) {
+	case BOTTOM:	//player wants to move down
+		if (currentSpace->bottom != 0) {	//if space is good, move and drain energy
 			energy -= ENERGY_DRAIN;
 			currentSpace = currentSpace->bottom;
 			return true;
@@ -67,8 +88,8 @@ bool Player::move(DIRECTION dir)
 		}
 		break;
 
-	case RIGHT:
-		if (currentSpace->right != 0) {
+	case RIGHT:		//player wants to move right
+		if (currentSpace->right != 0) {		//if space is good, move and drain energy
 			energy -= ENERGY_DRAIN;
 			currentSpace = currentSpace->right;
 			return true;
@@ -79,8 +100,8 @@ bool Player::move(DIRECTION dir)
 		}
 		break;
 
-	case LEFT:
-		if (currentSpace->left != 0) {
+	case LEFT:		//player wants to move left
+		if (currentSpace->left != 0) {		//if space is good, move and drain energy
 			energy -= ENERGY_DRAIN;
 			currentSpace = currentSpace->left;
 			return true;
@@ -97,8 +118,6 @@ bool Player::move(DIRECTION dir)
 
 /*
 Function to print what the player can currently see
-
-
 */
 void Player::look() const
 {
@@ -133,6 +152,9 @@ void Player::look() const
 
 }
 
+/*
+Helper function to add all prompts to the player action menu
+*/
 void Player::buildActions()
 {
 	//actions.clearMenu();
@@ -148,10 +170,20 @@ void Player::buildActions()
 
 }
 
+/*
+returns the total number of prompts in the actions menu
+*/
 int Player::getNumOfActions() const {
 	return actions.getExitCode();
 }
 
+/*
+Simulates the player opening their inventory.
+Builds a dynamic menu every time the player calls this function.
+
+The inventory function uses the Choice data structure, which is a convienient way to transfer information
+from the game class to the player.
+*/
 Choice Player::openInvetory() //print out user inventory and get input based on what the user would like to do
 {
 	//build inventory
@@ -181,22 +213,31 @@ Choice Player::openInvetory() //print out user inventory and get input based on 
 	return toReturn;
 }
 
-
+/*
+Function to simulate picking up an item from the group andplacing it into the player's inventory.
+*/
 void Player::pickUp()
 {
-
+	//push an item into the players inventory from the first spot in the current spaces inventory
 	_inventory.push_back(std::unique_ptr<Item>(currentSpace->_inventory.front().release()));
+
+	//erase the pointer to the item in the space, since item is not handled by player
 	currentSpace->_inventory.erase(currentSpace->_inventory.begin());
 
 }
 
+/*
+Checks that the players inventory isnt full
+*/
 bool Player::isFull()
 {
 	return _inventory.size() >= MAX_ITEMS;
 }
 
 
-//TODO::IMPLEMENT
+/*
+Function to restore some amount of health to the player.
+*/
 void Player::restoreHP(int amount)
 {
 	health += amount;
@@ -216,6 +257,9 @@ void Player::restoreHP(int amount)
 
 }
 
+/*
+Function to restore some amount of energy to the player
+*/
 void Player::restoreEnergy(int value)
 {
 	energy += value;
@@ -224,11 +268,17 @@ void Player::restoreEnergy(int value)
 	}
 }
 
+/*
+Setter function for attack
+*/
 void Player::setAttack(int value)
 {
 	attack_power = value;
 }
 
+/*
+Checks if the player ran out of energy, if so, then the game will end
+*/
 bool Player::isExhausted() const
 {
 	if (this->energy <= 0) {
@@ -239,6 +289,9 @@ bool Player::isExhausted() const
 	return false;
 }
 
+/*
+Checks if hte player ran out of health, if so, then the game will end
+*/
 bool Player::playerDead() const
 {
 	if (health <= 0) {

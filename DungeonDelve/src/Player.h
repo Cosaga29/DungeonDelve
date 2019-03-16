@@ -2,6 +2,19 @@
 #define PLAYERHPP
 #define PLAYER_HPP
 
+/**********************************************************
+Author: Martin Edmunds
+Email: edmundsm@oregonstate.edu
+Class: CS 162-400
+Date: 03/16/19
+Description: implements the player glass, inherits from entity.
+
+Defines movement, energy and health, look commands and inventory management.
+Defines Choice structure that contains a choice-code and the inventory index of the
+item that the player wants to use/drop.
+
+***********************************************************/
+
 
 #include "Entity.h"
 #include "Menu.hpp"

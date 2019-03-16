@@ -1,6 +1,16 @@
 #ifndef GREATERDEMON_HPP
 #define GREATERDEMON_HPP
 
+/**********************************************************
+Author: Martin Edmunds
+Email: edmundsm@oregonstate.edu
+Class: CS 162-400
+Date: 03/16/19
+Description: Implements the GreaterDemon class. The class is
+a boss character that the player must defeat to get the key to
+leave the game.
+
+***********************************************************/
 
 #include "Entity.h"
 

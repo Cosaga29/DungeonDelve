@@ -1,3 +1,15 @@
+/**********************************************************
+Author: Martin Edmunds
+Email: edmundsm@oregonstate.edu
+Class: CS 162-400
+Date: 03/16/19
+Description: Implements the HealthPotion class, inherits from Item.
+
+Defines an item that can be used by the player to restore their health
+pool. The potions have 3 uses that restore 20 health each, up to 60 energy.
+
+***********************************************************/
+
 #include "HealthPotion.h"
 #include "Player.h"
 
@@ -13,7 +25,12 @@ HealthPotion::~HealthPotion()
 {
 }
 
+/*
+Implements the player using the health potion. Checks to see if the potion has
+any uses, if not the item name changes to update the player that the potion is empty.
 
+If the potion is not empty, restores the players energy and subtracts uses
+*/
 void HealthPotion::use(Player* pl)
 {
 	if (uses <= 0) {	//no uses remain, change item description

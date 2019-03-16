@@ -1,11 +1,29 @@
+/**********************************************************
+Author: Martin Edmunds
+Email: edmundsm@oregonstate.edu
+Class: CS 162-400
+Date: 03/16/19
+Description: Implements the Entity class. Defines an object
+that is used by the game class to implement NPCs and the Player.
+
+Defines virtual move, drop and check functions.
+
+***********************************************************/
+
+
 #include "Entity.h"
 
-
+/*
+Return pointer to current space the entity is in. 
+*/
 Space * Entity::getCurrentSpace() const
 {
 	return currentSpace;
 }
 
+/*
+Sets the entity's space to a spot in the game.
+*/
 void Entity::setCurrentSpace(Space * space)
 {
 	currentSpace = space;
@@ -29,16 +47,25 @@ void Entity::drop(int inventory_index)
 
 }
 
+/*
+Simulate the entity picking up an item and putting it in their inventory
+*/
 void Entity::get(Item * pickup)
 {
 	_inventory.push_back(std::unique_ptr<Item>(pickup));
 }
 
+/*
+Setter function
+*/
 void Entity::setHealth(int value)
 {
 	health = value;
 }
 
+/*
+Checks if entity is dead by health 
+*/
 bool Entity::isDead() const
 {
 	return health <= 0;

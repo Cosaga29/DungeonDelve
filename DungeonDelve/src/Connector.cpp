@@ -1,3 +1,16 @@
+/**********************************************************
+Author: Martin Edmunds
+Email: edmundsm@oregonstate.edu
+Class: CS 162-400
+Date: 03/16/19
+Description: Implements the Connector space, inherits from Space.
+The connector space is a generic place on the board. Enemies are allowed
+to randomly spawn along with items.
+
+Constructor spawns random enemies and items
+
+***********************************************************/
+
 #include "Connector.h"
 #include "Player.h"
 #include "Demon.h"
@@ -7,8 +20,10 @@
 Connector::Connector(std::vector<std::string>* prompts) :
 	Space('X', prompts)
 {
-	std::random_device rngGen;
-	int chance = rngGen() % 100;
+	//create random device to generate numbers
+	std::random_device rngGen; //device used for RNG generation
+
+	int chance = rngGen() % 100;	//generate between 0-99
 
 	if (chance > 85) { //15% chance to spawn a demon
 		enemiesInRoom.push_back(std::unique_ptr<Entity>(new Demon(this)));
@@ -31,11 +46,17 @@ Connector::~Connector()
 {
 }
 
+/*
+Room has no onEnter method that is called
+*/
 bool Connector::onEnter(Player*)
 {
 	return true;
 }
 
+/*
+Removes any dead enemies at the end of the update-cycle
+*/
 void Connector::update(Player* pl)
 {
 	removeDeadEnemies();
@@ -46,6 +67,9 @@ void Connector::update(Player* pl)
 	}
 }
 
+/*
+Ensures player cannot leave if any enemies are in the room
+*/
 bool Connector::onExit(Player*)
 {
 	if (enemiesInRoom.empty()) {	//player needs to kill the enemies in the room before they can leave
@@ -55,9 +79,12 @@ bool Connector::onExit(Player*)
 	return false;
 }
 
+/*
+Randomly return a prompt to display to the character
+*/
 void Connector::getDescription() const
 {
-	std::random_device rngGen;
+	std::random_device rngGen; //device used for RNG generation
 	int prompt = rngGen() % CONNECTOR_PROMPTS;
 	std::cout << (*prompts)[prompt] << std::endl;
 }

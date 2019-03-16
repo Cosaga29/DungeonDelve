@@ -1,6 +1,16 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
+/**********************************************************
+Author: Martin Edmunds
+Email: edmundsm@oregonstate.edu
+Class: CS 162-400
+Date: 03/16/19
+Description: Implements the Game class. The game class acts
+as a game engine to handle player input and process game events
+
+***********************************************************/
+
 #include <iostream>
 #include "Chamber.h"
 #include "Connector.h"

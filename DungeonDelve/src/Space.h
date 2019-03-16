@@ -1,6 +1,20 @@
 #ifndef SPACE_HPP
 #define SPACE_HPP
 
+/**********************************************************
+Author: Martin Edmunds
+Email: edmundsm@oregonstate.edu
+Class: CS 162-400
+Date: 03/16/19
+Description: Implements the Space class. The space class
+is a superclass that is used by the game glass to model locations
+the player can visit.
+
+Each space two contains, one for entities in the room and one
+for items in the room.
+
+***********************************************************/
+
 #include <vector>
 #include <string>
 #include <memory>

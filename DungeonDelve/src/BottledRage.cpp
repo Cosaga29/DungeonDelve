@@ -1,6 +1,17 @@
+/**********************************************************
+Author: Martin Edmunds
+Email: edmundsm@oregonstate.edu
+Class: CS 162-400
+Date: 03/16/19
+Description: Implementation for item used in DungeonDelve.
+Implements a toggle-equip item that is used to power up the player.
+The item has direct access to the player and can change the players
+attack value directly. Inherits from Item
+
+***********************************************************/
+
 #include "BottledRage.h"
 #include "Player.h"
-
 
 
 BottledRage::BottledRage(int _id, bool _bound, int _uses, std::string desc) :
