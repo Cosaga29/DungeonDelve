@@ -12,7 +12,9 @@ the player can choose to play agian.
 
 #include "Game.h"
 
-
+/*
+Main function, creates game object and handles playing and replaying the game
+*/
 int main() {
 
 	//create start menu
@@ -45,8 +47,8 @@ int main() {
 	}
 
 
-	clearInputStream();
-	std::cin.get();
+	//clearInputStream();
+	//std::cin.get();
 
 	return 0;
 }
