@@ -15,7 +15,7 @@ Player must kill greater dmeon to spawn the key
 
 ***********************************************************/
 
-#include "Space.h"
+#include "Space.hpp"
 
 class ExitRoom : public Space
 {

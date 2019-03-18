@@ -9,7 +9,7 @@ leave the game.
 
 ***********************************************************/
 
-#include "GreaterDemon.h"
+#include "GreaterDemon.hpp"
 
 
 /*

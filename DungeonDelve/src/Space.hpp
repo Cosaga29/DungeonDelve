@@ -19,11 +19,11 @@ for items in the room.
 #include <string>
 #include <memory>
 #include <random>
-#include "Item.h"
+#include "Item.hpp"
 #include <iostream>
-#include "HealthPotion.h"
-#include "EnergyPotion.h"
-#include "BottledRage.h"
+#include "HealthPotion.hpp"
+#include "EnergyPotion.hpp"
+#include "BottledRage.hpp"
 
 typedef std::vector<std::unique_ptr<Item> > Inventory;
 

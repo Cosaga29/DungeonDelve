@@ -10,8 +10,8 @@ the greater demon.
 
 ***********************************************************/
 
-#include "Shield.h"
-#include "Player.h"
+#include "Shield.hpp"
+#include "Player.hpp"
 
 /*Constructor*/
 Shield::Shield(int _id, bool _bound, int _uses, std::string desc) :

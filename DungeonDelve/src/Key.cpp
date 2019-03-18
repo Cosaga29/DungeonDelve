@@ -8,7 +8,7 @@ The key is used to beat the game and can only be dropped by the game class.
 
 ***********************************************************/
 
-#include "Key.h"
+#include "Key.hpp"
 
 
 

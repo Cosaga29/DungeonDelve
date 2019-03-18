@@ -10,7 +10,7 @@ Simple room that cannot spawn entities.
 
 ***********************************************************/
 
-#include "Shrine.h"
+#include "Shrine.hpp"
 
 
 /*Constructor*/

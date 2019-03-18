@@ -12,9 +12,9 @@ Player must kill greater dmeon to spawn the key
 
 ***********************************************************/
 
-#include "ExitRoom.h"
-#include "Player.h"
-#include "Key.h"
+#include "ExitRoom.hpp"
+#include "Player.hpp"
+#include "Key.hpp"
 
 
 /*

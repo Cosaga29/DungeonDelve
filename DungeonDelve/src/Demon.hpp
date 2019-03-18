@@ -13,7 +13,7 @@ the game.
 
 ***********************************************************/
 
-#include "Entity.h"
+#include "Entity.hpp"
 
 #define DEMON_START_HEALTH 10
 #define DEMON_START_ATTACK 5

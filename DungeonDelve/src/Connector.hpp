@@ -16,7 +16,7 @@ Constructor spawns random enemies and items
 
 #define CONNECTOR_PROMPTS 5
 
-#include "Space.h"
+#include "Space.hpp"
 class Connector : public Space
 {
 private:

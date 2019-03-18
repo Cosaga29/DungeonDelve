@@ -13,7 +13,7 @@ Constructor spawns an entity that must be defeated for a key
 
 ***********************************************************/
 
-#include "Space.h"
+#include "Space.hpp"
 class Chamber : public Space
 {
 

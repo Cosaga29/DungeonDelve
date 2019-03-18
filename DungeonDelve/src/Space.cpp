@@ -12,9 +12,9 @@ for items in the room.
 
 ***********************************************************/
 
-#include "Space.h"
-#include "Entity.h"
-#include "Player.h"
+#include "Space.hpp"
+#include "Entity.hpp"
+#include "Player.hpp"
 
 
 /*

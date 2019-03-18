@@ -12,23 +12,23 @@ as a game engine to handle player input and process game events
 ***********************************************************/
 
 #include <iostream>
-#include "Chamber.h"
-#include "Connector.h"
-#include "Entity.h"
-#include "Item.h"
-#include "Player.h"
-#include "Shrine.h"
-#include "Space.h"
-#include "StartRoom.h"
-#include "ExitRoom.h"
+#include "Chamber.hpp"
+#include "Connector.hpp"
+#include "Entity.hpp"
+#include "Item.hpp"
+#include "Player.hpp"
+#include "Shrine.hpp"
+#include "Space.hpp"
+#include "StartRoom.hpp"
+#include "ExitRoom.hpp"
 #include <memory>
-#include "Shield.h"
-#include "HealthPotion.h"
-#include "EnergyPotion.h"
-#include "Key.h"
-#include "BottledRage.h"
-#include "Demon.h"
-#include "GreaterDemon.h"
+#include "Shield.hpp"
+#include "HealthPotion.hpp"
+#include "EnergyPotion.hpp"
+#include "Key.hpp"
+#include "BottledRage.hpp"
+#include "Demon.hpp"
+#include "GreaterDemon.hpp"
 
 #define MAP_WIDTH	6
 #define MAP_HEIGHT	7

@@ -13,7 +13,7 @@ The start room prints the guide to the game, along with a map
 
 ***********************************************************/
 
-#include "Space.h"
+#include "Space.hpp"
 
 
 class StartRoom : public Space

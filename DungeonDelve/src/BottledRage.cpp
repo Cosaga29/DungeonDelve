@@ -10,8 +10,8 @@ attack value directly. Inherits from Item
 
 ***********************************************************/
 
-#include "BottledRage.h"
-#include "Player.h"
+#include "BottledRage.hpp"
+#include "Player.hpp"
 
 
 BottledRage::BottledRage(int _id, bool _bound, int _uses, std::string desc) :

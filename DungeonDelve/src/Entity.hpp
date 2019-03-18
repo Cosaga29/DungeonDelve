@@ -13,8 +13,8 @@ Defines virtual move, drop and check functions.
 
 ***********************************************************/
 
-#include "Item.h"
-#include "Space.h"
+#include "Item.hpp"
+#include "Space.hpp"
 #include "Menu.hpp"
 
 class Entity

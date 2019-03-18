@@ -10,7 +10,7 @@ The start room prints the guide to the game, along with a map
 
 ***********************************************************/
 
-#include "StartRoom.h"
+#include "StartRoom.hpp"
 
 
 /*Constructor

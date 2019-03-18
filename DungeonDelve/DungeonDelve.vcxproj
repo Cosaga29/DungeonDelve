@@ -138,26 +138,26 @@
     <ClCompile Include="src\StartRoom.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\GreaterDemon.h" />
-    <ClInclude Include="src\Demon.h" />
-    <ClInclude Include="src\Shield.h" />
-    <ClInclude Include="src\BottledRage.h" />
-    <ClInclude Include="src\EnergyPotion.h" />
-    <ClInclude Include="src\HealthPotion.h" />
-    <ClInclude Include="src\ExitRoom.h" />
-    <ClInclude Include="src\Chamber.h" />
-    <ClInclude Include="src\Connector.h" />
-    <ClInclude Include="src\Entity.h" />
+    <ClInclude Include="src\GreaterDemon.hpp" />
+    <ClInclude Include="src\Demon.hpp" />
+    <ClInclude Include="src\Shield.hpp" />
+    <ClInclude Include="src\BottledRage.hpp" />
+    <ClInclude Include="src\EnergyPotion.hpp" />
+    <ClInclude Include="src\HealthPotion.hpp" />
+    <ClInclude Include="src\ExitRoom.hpp" />
+    <ClInclude Include="src\Chamber.hpp" />
+    <ClInclude Include="src\Connector.hpp" />
+    <ClInclude Include="src\Entity.hpp" />
     <ClInclude Include="src\InputValidationFunctions.hpp" />
-    <ClInclude Include="src\Item.h" />
-    <ClInclude Include="src\Key.h" />
+    <ClInclude Include="src\Item.hpp" />
+    <ClInclude Include="src\Key.hpp" />
     <ClInclude Include="src\Menu.hpp" />
     <ClInclude Include="src\NumGenerator.hpp" />
-    <ClInclude Include="src\Player.h" />
-    <ClInclude Include="src\Shrine.h" />
-    <ClInclude Include="src\Space.h" />
-    <ClInclude Include="src\Game.h" />
-    <ClInclude Include="src\StartRoom.h" />
+    <ClInclude Include="src\Player.hpp" />
+    <ClInclude Include="src\Shrine.hpp" />
+    <ClInclude Include="src\Space.hpp" />
+    <ClInclude Include="src\Game.hpp" />
+    <ClInclude Include="src\StartRoom.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

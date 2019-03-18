@@ -9,7 +9,7 @@ Defines movement, energy and health, look commands and inventory management.
 
 ***********************************************************/
 
-#include "Player.h"
+#include "Player.hpp"
 
 
 /*

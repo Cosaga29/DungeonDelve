@@ -16,7 +16,7 @@ item that the player wants to use/drop.
 ***********************************************************/
 
 
-#include "Entity.h"
+#include "Entity.hpp"
 #include "Menu.hpp"
 
 #define MAX_ITEMS		5

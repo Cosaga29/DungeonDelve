@@ -10,7 +10,7 @@ the player can choose to play agian.
 
 ***********************************************************/
 
-#include "Game.h"
+#include "Game.hpp"
 
 /*
 Main function, creates game object and handles playing and replaying the game

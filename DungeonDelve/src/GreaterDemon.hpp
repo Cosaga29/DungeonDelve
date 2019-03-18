@@ -12,7 +12,7 @@ leave the game.
 
 ***********************************************************/
 
-#include "Entity.h"
+#include "Entity.hpp"
 
 #define GDEMON_START_HEALTH 500
 #define GDEMON_START_ATTACK 25

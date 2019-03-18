@@ -1,7 +1,7 @@
 #ifndef BR_HPP
 #define BR_HPP
 
-#include "Item.h"
+#include "Item.hpp"
 
 /**********************************************************
 Author: Martin Edmunds

@@ -10,10 +10,10 @@ Constructor spawns an entity that must be defeated for a key
 
 ***********************************************************/
 
-#include "Chamber.h"
-#include "GreaterDemon.h"
-#include "Player.h"
-#include "Key.h"
+#include "Chamber.hpp"
+#include "GreaterDemon.hpp"
+#include "Player.hpp"
+#include "Key.hpp"
 
 
 /*

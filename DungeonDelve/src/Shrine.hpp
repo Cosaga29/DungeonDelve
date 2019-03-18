@@ -13,7 +13,7 @@ Simple room that cannot spawn entities.
 
 ***********************************************************/
 
-#include "Space.h"
+#include "Space.hpp"
 
 
 class Shrine : public Space

@@ -11,9 +11,9 @@ Constructor spawns random enemies and items
 
 ***********************************************************/
 
-#include "Connector.h"
-#include "Player.h"
-#include "Demon.h"
+#include "Connector.hpp"
+#include "Player.hpp"
+#include "Demon.hpp"
 
 
 

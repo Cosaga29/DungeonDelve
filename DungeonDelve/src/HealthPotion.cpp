@@ -10,8 +10,8 @@ pool. The potions have 3 uses that restore 20 health each, up to 60 energy.
 
 ***********************************************************/
 
-#include "HealthPotion.h"
-#include "Player.h"
+#include "HealthPotion.hpp"
+#include "Player.hpp"
 
 
 

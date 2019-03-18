@@ -11,7 +11,7 @@ Defines virtual move, drop and check functions.
 ***********************************************************/
 
 
-#include "Entity.h"
+#include "Entity.hpp"
 
 /*
 Return pointer to current space the entity is in. 

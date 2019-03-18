@@ -8,7 +8,7 @@ as a game engine to handle player input and process game events
 
 ***********************************************************/
 
-#include "Game.h"
+#include "Game.hpp"
 
 /*
 Game constructor, builds starting room prompts to be pulled from the rooms during 

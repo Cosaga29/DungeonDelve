@@ -13,7 +13,7 @@ the greater demon.
 
 ***********************************************************/
 
-#include "Item.h"
+#include "Item.hpp"
 
 #define SHIELD_ID			25
 #define SHIELD_BOUND		true

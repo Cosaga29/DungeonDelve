@@ -10,8 +10,8 @@ pool. The potions have 2 uses that restore 50 energy each, up to 100 energy.
 
 ***********************************************************/
 
-#include "EnergyPotion.h"
-#include "Player.h"
+#include "EnergyPotion.hpp"
+#include "Player.hpp"
 
 
 /*

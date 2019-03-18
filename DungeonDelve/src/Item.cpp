@@ -13,8 +13,8 @@ Consumable items have a limited number of uses.
 
 ***********************************************************/
 
-#include "Item.h"
-#include "Player.h"
+#include "Item.hpp"
+#include "Player.hpp"
 
 
 /*Constructor*/

@@ -13,7 +13,7 @@ pool. The potions have 2 uses that restore 50 energy each, up to 100 energy.
 
 ***********************************************************/
 
-#include "Item.h"
+#include "Item.hpp"
 
 #define EP_ID			10
 #define EP_BOUND		false

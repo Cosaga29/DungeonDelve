@@ -15,7 +15,7 @@ pool. The potions have 3 uses that restore 20 health each, up to 60 energy.
 ***********************************************************/
 
 
-#include "Item.h"
+#include "Item.hpp"
 
 #define HP_ID			15
 #define HP_BOUND		false
